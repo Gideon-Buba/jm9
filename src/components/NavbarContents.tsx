@@ -8,7 +8,7 @@ interface NavbarContentsProps {
 const NavbarContents: React.FC<NavbarContentsProps> = ({ active, text }) => {
   return (
     <div className={`sidebar-contents ${active && 'sidebar-contents-active'}`}>
-      <p className="text-white font-extralight hover:bg-teal-500 py-2 px-4  cursor-pointer">{text}</p>
+      <p className="text-white font-extralight hover:underline  cursor-pointer">{text}</p>
     </div>
   );
 };
