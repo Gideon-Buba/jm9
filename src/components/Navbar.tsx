@@ -1,18 +1,16 @@
-import React from 'react';
-import NavbarContents from "./NavbarContents";
+import {NavLink} from "react-router-dom";
 
-const Navbar: React.FC = () => {
-  return (
-    <div className='flex justify-evenly bg-gray-800 py-8'>
-      <NavbarContents text='Home' />
-      <NavbarContents text='Events' />
-      <NavbarContents text='Gallery' />
-      <NavbarContents text='Support' />
-      <NavbarContents text='Media' />
-      <NavbarContents text='Apply' />
-      <NavbarContents text='Contact' />
-    </div>
-  );
+const Navbar:React.FC = () => {
+    return (
+        <div className="w-1/3">
+            <NavLink>Home</NavLink>
+            <NavLink>Event</NavLink>
+            <NavLink>Gallery</NavLink>
+            <NavLink>Media</NavLink>
+            <NavLink>Join us</NavLink>
+            <NavLink>Contact Us</NavLink>
+        </div>
+    )
 }
 
-export default Navbar;
+export default Navbar
