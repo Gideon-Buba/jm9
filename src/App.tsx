@@ -1,13 +1,10 @@
-import Hero from "./components/Hero"
-import Navbar from "./components/Navbar"
-
+import Nav from "./components/Nav";
 function App() {
 
   return ( 
-    <>
-      <Navbar/>
-      <Hero />
-    </>
+    <div className="bg-slate-900">
+        <Nav/>
+    </div>
   )
 }
 
