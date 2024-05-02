@@ -1,8 +1,8 @@
-import Nav from "./components/Nav";
+import Nav from "./components/Navs/Nav.tsx";
 function App() {
 
   return ( 
-    <div className="bg-slate-900">
+    <div className="bg-blur-950">
         <Nav/>
     </div>
   )
