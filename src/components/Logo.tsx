@@ -7,8 +7,8 @@ export const Logo = () => {
     <NavLink to="/" className="inline-block">
       <motion.img
         alt="jm9"
-        src="assets/JM9.png"
-        className="block w-[75px]"
+        src="/src/assets/JM9.png" // Ensure this path is correct
+        className="block w-[75px] h-auto rounded-full" // Added `h-auto` for better scaling
         width="75"
         height="50"
         variants={logoRotationVariant}

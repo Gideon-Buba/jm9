@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-
 import Header from "./components/Header";
 import { Home } from "./components/pages/Home";
 import { Events } from "./components/pages/Events";
@@ -9,13 +8,10 @@ import { Media } from "./components/pages/Media";
 import { Apply } from "./components/pages/Apply";
 import { Contact } from "./components/pages/Contact";
 
-import { Nav } from "./components/Nav";
-
 function App() {
   return (
     <>
       <Header />
-      <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/events" element={<Events />} />

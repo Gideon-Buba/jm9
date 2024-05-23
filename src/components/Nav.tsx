@@ -1,40 +1,103 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { NavLink, useLocation } from "@remix-run/react";
 import { Menu, X } from "lucide-react";
-import { NavLink } from "react-router-dom";
-export const NavLinks = () => {
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  mobileNavContainerVariant,
+  mobileNavListVariant,
+  mobileNavExitProps,
+} from "../data/animationConfig";
+
+const activeClassName = "selected navlink";
+const activeStyleCallback = ({ isActive }: { isActive: boolean }) =>
+  isActive ? activeClassName : "navlink";
+
+const NavLinks = () => {
   return (
-    <div>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/events">Events</NavLink>
-      <NavLink to="/gallery">Gallery</NavLink>
-      <NavLink to="/support">Support</NavLink>
-      <NavLink to="/media">Media</NavLink>
-      <NavLink to="/apply">Apply</NavLink>
-      <NavLink to="/contact">Contact</NavLink>
+    <div className="flex flex-col md:flex-row md:space-x-12 space-y-2 md:space-y-0">
+      <NavLink to="/" className={activeStyleCallback}>
+        Home
+      </NavLink>
+      <NavLink to="/events" className={activeStyleCallback}>
+        Events
+      </NavLink>
+      <NavLink to="/gallery" className={activeStyleCallback}>
+        Gallery
+      </NavLink>
+      <NavLink to="/support" className={activeStyleCallback}>
+        Support
+      </NavLink>
+      <NavLink to="/media" className={activeStyleCallback}>
+        Media
+      </NavLink>
+      <NavLink to="/apply" className={activeStyleCallback}>
+        Apply
+      </NavLink>
+      <NavLink to="/contact" className={activeStyleCallback}>
+        Contact
+      </NavLink>
     </div>
   );
 };
 
-export const Nav = () => {
+const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
-  const toggleNavbar = () => setIsOpen(!isOpen);
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
+  const toggleNavbar = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <>
-      <nav className="w-1/3 flex justify-end">
-        <div className="hidden w-full md:flex justify-between">
+      <nav className="flex items-center justify-between w-full p-4 md:p-0">
+        <div className="hidden md:flex justify-center flex-1">
           <NavLinks />
         </div>
-        <div className="md:hidden">
-          <button onClick={toggleNavbar}>{isOpen ? <X /> : <Menu />}</button>
+        <div className="md:hidden flex items-center">
+          <button onClick={toggleNavbar}>
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
       </nav>
-      {isOpen && (
-        <div className="flex basis-full flex-col items-center">
-          <NavLinks />
-        </div>
-      )}
+      <AnimatePresence mode="wait">
+        {isOpen && (
+          <motion.div
+            layout="position"
+            key="nav-links"
+            variants={mobileNavContainerVariant}
+            initial="hidden"
+            animate="show"
+            className="mt-4 basis-full md:hidden flex flex-col items-center"
+          >
+            {[
+              "/",
+              "/events",
+              "/gallery",
+              "/support",
+              "/media",
+              "/apply",
+              "/contact",
+            ].map((path, index) => (
+              <motion.div
+                key={index}
+                variants={mobileNavListVariant}
+                {...mobileNavExitProps}
+              >
+                <NavLink to={path} className={activeStyleCallback}>
+                  {path.substring(1) || "Home"}
+                </NavLink>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
+
+export default Nav;
