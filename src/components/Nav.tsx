@@ -8,32 +8,49 @@ import {
   mobileNavExitProps,
 } from "../data/animationConfig";
 
-const activeClassName = "selected navlink";
-const activeStyleCallback = ({ isActive }: { isActive: boolean }) =>
-  isActive ? activeClassName : "navlink";
-
 const NavLinks = () => {
   return (
-    <div className="flex flex-col md:flex-row md:space-x-12 space-y-2 md:space-y-0">
-      <NavLink to="/" className={activeStyleCallback}>
+    <div className="flex flex-col md:flex-row md:space-x-10 space-y-2 md:space-y-0">
+      <NavLink
+        to="/"
+        className={({ isActive }) => `navlink ${isActive ? "selected" : ""}`}
+      >
         Home
       </NavLink>
-      <NavLink to="/events" className={activeStyleCallback}>
+      <NavLink
+        to="/events"
+        className={({ isActive }) => `navlink ${isActive ? "selected" : ""}`}
+      >
         Events
       </NavLink>
-      <NavLink to="/gallery" className={activeStyleCallback}>
+      <NavLink
+        to="/gallery"
+        className={({ isActive }) => `navlink ${isActive ? "selected" : ""}`}
+      >
         Gallery
       </NavLink>
-      <NavLink to="/support" className={activeStyleCallback}>
+      <NavLink
+        to="/support"
+        className={({ isActive }) => `navlink ${isActive ? "selected" : ""}`}
+      >
         Support
       </NavLink>
-      <NavLink to="/media" className={activeStyleCallback}>
+      <NavLink
+        to="/media"
+        className={({ isActive }) => `navlink ${isActive ? "selected" : ""}`}
+      >
         Media
       </NavLink>
-      <NavLink to="/apply" className={activeStyleCallback}>
+      <NavLink
+        to="/apply"
+        className={({ isActive }) => `navlink ${isActive ? "selected" : ""}`}
+      >
         Apply
       </NavLink>
-      <NavLink to="/contact" className={activeStyleCallback}>
+      <NavLink
+        to="/contact"
+        className={({ isActive }) => `navlink ${isActive ? "selected" : ""}`}
+      >
         Contact
       </NavLink>
     </div>
@@ -54,7 +71,7 @@ const Nav = () => {
 
   return (
     <>
-      <nav className="flex items-center justify-between w-full p-4 md:p-0">
+      <nav className="flex items-center justify-between w-full p-4 md:p-0 md:justify-end">
         <div className="hidden md:flex justify-center flex-1">
           <NavLinks />
         </div>
@@ -88,7 +105,12 @@ const Nav = () => {
                 variants={mobileNavListVariant}
                 {...mobileNavExitProps}
               >
-                <NavLink to={path} className={activeStyleCallback}>
+                <NavLink
+                  to={path}
+                  className={({ isActive }) =>
+                    `navlink ${isActive ? "selected" : ""}`
+                  }
+                >
                   {path.substring(1) || "Home"}
                 </NavLink>
               </motion.div>
