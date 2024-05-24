@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.navlink {
+    @apply text-gray-600 dark:text-gray-300 transition-colors duration-300;
+  }
+  .navlink:hover {
+    @apply text-black dark:text-white underline;
+  }
+  .selected {
+    @apply text-blue-500 font-bold underline;
+  }
+  
