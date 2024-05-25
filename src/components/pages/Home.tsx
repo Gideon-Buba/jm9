@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Home: React.FC = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <div
       className="bg-gray-100 overflow-y-scroll"
@@ -8,13 +14,13 @@ const Home: React.FC = () => {
     >
       <div className="scroll-container">
         <section className="flex items-center justify-center h-screen p-8 scroll-snap-align-start">
-          <div className="container mx-auto flex flex-col md:flex-row items-center justify-between bg-white p-8 rounded-lg shadow-lg shadow-[#214973] mt-[-4em] md:mt-[-6em] scroll-snap-align-start">
-            <div
-              data-aos="fade-up"
-              data-aos-offset="200"
-              data-aos-delay="50"
-              className="md:w-1/2 space-y-6 text-gray-800 md:pr-8"
-            >
+          <div
+            data-aos="fade-up"
+            data-aos-offset="200"
+            data-aos-delay="500"
+            className="container mx-auto flex flex-col md:flex-row items-center justify-between bg-white p-8 rounded-lg shadow-lg shadow-[#214973] mt-[-4em] md:mt-[-6em] scroll-snap-align-start"
+          >
+            <div className="md:w-1/2 space-y-6 text-gray-800 md:pr-8">
               <div>
                 <h1 className="text-3xl md:text-4xl font-bold mb-4">
                   Mission Statement
