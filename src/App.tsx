@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
-import { Home } from "./components/pages/Home";
+import Home from "./components/pages/Home";
 import { Events } from "./components/pages/Events";
 import { Gallery } from "./components/pages/Gallery";
 import { Support } from "./components/pages/Support";
@@ -23,15 +23,5 @@ function App() {
       </Routes>
     </>
   );
-=======
-import Nav from "./components/Navs/Nav.tsx";
-function App() {
-
-  return ( 
-    <div className="bg-blur-950">
-        <Nav/>
-    </div>
-  )
 }
-
 export default App;
