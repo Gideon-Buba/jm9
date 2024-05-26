@@ -34,7 +34,7 @@ const Home: React.FC = () => {
                 <h1 className="text-3xl md:text-4xl font-bold mb-4">
                   Vision Statement
                 </h1>
-                <p>
+                <p className="text-justify">
                   We see ourselves becoming a platform that will not only expose
                   these neglected orphaned youth to sports, particularly
                   football but also present a platform for identifying talent,
@@ -73,7 +73,7 @@ const Home: React.FC = () => {
           <img
             src="src/assets/overview.png"
             alt="Empowering Youth"
-            className="w-full rounded-lg shadow"
+            className="w-80 rounded-lg shadow"
           />
         </section>
       </div>
